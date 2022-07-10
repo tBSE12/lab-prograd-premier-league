@@ -1,4 +1,154 @@
 //Trial 1 - create a Manager array and return it
+function createManager(managerName, managerAge, currentTeam, trophiesWon) {
+  var array = [managerName, managerAge, currentTeam, trophiesWon];
+  return array;
+}
+
+try {
+  var manager = createManager(
+    managerName,
+    managerAge,
+    currentTeam,
+    trophiesWon
+  );
+} catch (e) {
+  // do nothing - expected error
+}
+
+//Progression 2 - create a formation object and return it
+var formation = [4, 4, 3];
+
+//write your function here
+function createFormation(formation) {
+  if (formation.length == 0) {
+    return null;
+  }
+  var resultFormation = {
+    defender: formation[0],
+    midfield: formation[1],
+    forward: formation[2],
+  };
+  return resultFormation;
+}
+
+try {
+  var formationObject = createFormation(formation);
+} catch (e) {
+  //do nothing
+}
+
+//Progression 3 - Filter players that debuted in _ year
+
+function filterByDebut(year) {
+  // console.log(year);
+  var a = [],
+    j = 0;
+  players.forEach((player, index) => {
+    if (player.debut == year) {
+      a[j] = player;
+      j++;
+    }
+  });
+
+  return a;
+}
+
+function filterByPosition(position) {
+  var a = [],
+    j = 0;
+
+  players.forEach((player, index) => {
+    if (position == player.position) {
+      a[j] = player;
+      j++;
+    }
+  });
+  return a;
+}
+
+function filterByAward(awardName) {
+  let a = [];
+  players.forEach((player, index) => {
+    players[index].awards.forEach((award) => {
+      if (award.name == awardName) {
+        a.push(player);
+      }
+    });
+  });
+  return a;
+}
+
+function filterByAwardxTimes(awardName, noOfTimes) {
+  let a = [];
+
+  players.forEach((player) => {
+    var count = 0;
+    player.awards.forEach((award, index) => {
+      if (award.name == awardName) {
+        count++;
+      }
+    });
+    if (count == noOfTimes) {
+      a.push(player);
+    }
+  });
+  return a;
+}
+
+function filterByAwardxCountry(awardName, country) {
+  let a = [];
+  players.forEach((player, index) => {
+    player.awards.forEach((award) => {
+      if (award.name == awardName && player.country == country) {
+        if (!a.includes(player)) {
+          a.push(player);
+        }
+      }
+    });
+  });
+  return a;
+}
+
+function filterByNoOfAwardsxTeamxAge(noOfAwards, team, agr) {
+  let a = [];
+
+  players.forEach((player, index) => {
+    var count = 0;
+    if (
+      player.awards.length >= noOfAwards &&
+      player.team == team &&
+      player.age == age
+    )
+      a.push(players[i]);
+  });
+  return a;
+}
+
+function SortByAge() {
+  var a = [];
+  players.forEach((player) => {
+    a.push(player);
+  });
+  a.sort((a, b) => {
+    return b.age - a.age;
+  });
+  console.log(a);
+  return a;
+}
+
+function filterByNoOfAwardsxTeamxAge(total, team, age) {
+  var a = [];
+  players.forEach((player) => {
+    if (
+      total <= player.awards.length &&
+      team == player.team &&
+      age > player.age
+    ) {
+      a.push(player);
+    }
+  });
+  return a;
+}
 describe("Create a Manager array and return it - createManager", function() {
   it("Defines createManager -createManager", function() {
     expect(typeof createManager).toBe("function");
